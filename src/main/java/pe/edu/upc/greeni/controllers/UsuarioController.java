@@ -21,7 +21,7 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService us;
 
-    @GetMapping("/debug/users")
+    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('PLANTLOVER')or hasAuthority('CIENTIFICO') ")
     public List<UsuarioDTOList> listar(){
         return us.list().stream().map(y->{
             ModelMapper m = new ModelMapper();
