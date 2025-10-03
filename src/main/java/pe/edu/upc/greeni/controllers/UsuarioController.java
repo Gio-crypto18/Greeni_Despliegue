@@ -20,8 +20,8 @@ import java.util.stream.Collectors;
 public class UsuarioController {
     @Autowired
     private IUsuarioService us;
-    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('PLANTLOVER')or hasAuthority('CIENTIFICO') ")
-    @GetMapping("/info")
+
+    @GetMapping("/debug/users")
     public List<UsuarioDTOList> listar(){
         return us.list().stream().map(y->{
             ModelMapper m = new ModelMapper();
