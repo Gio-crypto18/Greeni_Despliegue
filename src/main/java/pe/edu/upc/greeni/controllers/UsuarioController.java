@@ -16,12 +16,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/usuarios")//noombre en español
+@RequestMapping("/usuarios")
 public class UsuarioController {
     @Autowired
     private IUsuarioService us;
 
     @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('PLANTLOVER')or hasAuthority('CIENTIFICO') ")
+    @GetMapping("/info")
     public List<UsuarioDTOList> listar(){
         return us.list().stream().map(y->{
             ModelMapper m = new ModelMapper();
